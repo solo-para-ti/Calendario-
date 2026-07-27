@@ -6,6 +6,16 @@ var captureIndex;
 
 var palabras = ["Garo", "Gallian", "Aho", "Buen9", "Diermo", "Uju.", "Sorsa", "Ajajaja7", "Ais", "Salr", "Ujun", "<Y", "Ezr", "Mao", "Pintos", "Algov", "Polítici", "Esoi", "Ciegob", "Ujam", "JAJAJAJ@", "Qur", "AJJAJAJAJAJAJAJ@", "A", "burnop", "Ay", "ay", "Mal9", "Focking", "Nonino", "Ske", "Totuga", "Estudee", "Cocholate", "Burno", "Esi", "Pingües", "Suenas", "conmigo", "Ajan", "Sev", "Qur", "Lanta", "Mrico", "Cuent", "Pelosb", "Emp", "Burnop", "Vovler", "Uyyt", "Tal", "ces", "JAajajjaja", "Nanananananan", "Digitod", "Udlos", "Najajajajajaj", "Pode", "Norias", "Nosa", "Mil", "tenas", "A", "ti", "ta", "Gago", "Versad", "Oswa", "Que", "perez", "Eso", "sw", "Tubería", "Erabe", "Baso", "Tenga", "de", "Pues", "so", "Escla9", "Desactive", "Historiaz", "Qje", "Nonon9", "Lelgue", "Pues", "mo", "Usj", "Entem", "Esl", "Curio", "Espery", "Somo", "Paos", "Binito."];
 
+function obtenerPalabras() {
+  var guardadas = [];
+  try {
+    guardadas = JSON.parse(localStorage.getItem("palabrasExtra")) || [];
+  } catch (e) {
+    guardadas = [];
+  }
+  return palabras.concat(guardadas);
+}
+
 function init() {
   canvas = document.getElementById("testCanvas");
 
@@ -36,14 +46,15 @@ function init() {
 			container.addChild(heart);
 		}
 
-  var palabraAleatoria = palabras[Math.floor(Math.random() * palabras.length)];
-  var text = new createjs.Text("Lo que un día dijo mi novia:\n" + palabraAleatoria, "bold 24px Arial", "#fff");
+  var listaCompleta = obtenerPalabras();
+  var palabraAleatoria = listaCompleta[Math.floor(Math.random() * listaCompleta.length)];
+  var text = new createjs.Text("La nueva palabra del día es:\n" + palabraAleatoria, "bold 24px Arial", "#fff");
   text.textAlign = "center";
   text.x = w / 2;
   text.y = h / 2 - text.getMeasuredLineHeight();
   stage.addChild(text);
 
-  for (i = 0; i < 100; i++) {
+  for (i = 0; i < 30; i++) {
     var captureContainer = new createjs.Container();
     captureContainer.cache(0, 0, w, h);
     captureContainers.push(captureContainer);
@@ -72,7 +83,7 @@ function tick(event) {
 				heart.perX = (1 + Math.random() * 2) * h;
 				heart.offX = Math.random() * h;
 				heart.ampX = heart.perX * 0.1 * (0.15 + Math.random());
-				heart.velY = (-Math.random() * 2 - 1) * 0.3;
+				heart.velY = (-Math.random() * 2 - 1) * 0.15;
 				heart.scale = Math.random() * 2 + 1;
 				heart._rotation = Math.random() * 40 - 20;
 				heart.alpha = Math.random() * 0.75 + 0.05;
