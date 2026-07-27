@@ -48,6 +48,14 @@ function init() {
 
   createjs.Ticker.timingMode = createjs.Ticker.RAF;
   createjs.Ticker.on("tick", tick);
+
+  var audio = document.getElementById("miCancion");
+  document.addEventListener("touchstart", function () {
+    audio.play();
+  }, { once: true });
+  document.addEventListener("click", function () {
+    audio.play();
+  }, { once: true });
 }
 
 function tick(event) {
