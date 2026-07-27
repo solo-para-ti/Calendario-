@@ -37,7 +37,7 @@ function init() {
 		}
 
   var palabraAleatoria = palabras[Math.floor(Math.random() * palabras.length)];
-  var text = new createjs.Text("Lo que un día diji mi novia:\n" + palabraAleatoria, "bold 24px Arial", "#fff");
+  var text = new createjs.Text("Lo que un día dijo mi novia:\n" + palabraAleatoria, "bold 24px Arial", "#fff");
   text.textAlign = "center";
   text.x = w / 2;
   text.y = h / 2 - text.getMeasuredLineHeight();
