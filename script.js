@@ -3,6 +3,7 @@ var stage;
 var container;
 var captureContainers;
 var captureIndex;
+var factorEscala;
 
 function init() {
   canvas = document.getElementById("testCanvas");
@@ -19,7 +20,10 @@ function init() {
   captureContainers = [];
   captureIndex = 0;
 
-		for (var i = 0; i < 20; i++) {
+  factorEscala = Math.min(1, Math.sqrt((w * h) / (1000 * 700)));
+  var cantidadCorazones = Math.max(12, Math.round(40 * factorEscala));
+
+		for (var i = 0; i < cantidadCorazones; i++) {
 			var heart = new createjs.Shape();
 			heart.graphics.beginFill(createjs.Graphics.getHSL(Math.random() * 30 - 45, 100, 50 + Math.random() * 30));
 			heart.graphics.moveTo(0, -12).curveTo(1, -20, 8, -20).curveTo(16, -20, 16, -10).curveTo(16, 0, 0, 12);
@@ -40,7 +44,7 @@ function init() {
   text.lineWidth = w * 0.9;
   stage.addChild(text);
 
-  for (i = 0; i < 40; i++) {
+  for (i = 0; i < cantidadCorazones; i++) {
     var captureContainer = new createjs.Container();
     captureContainer.cache(0, 0, w, h);
     captureContainers.push(captureContainer);
@@ -78,7 +82,7 @@ function tick(event) {
 				heart.offX = Math.random() * h;
 				heart.ampX = heart.perX * 0.1 * (0.15 + Math.random());
 				heart.velY = -Math.random() * 0.8 - 0.4;
-				heart.scale = Math.random() * 2 + 1;
+				heart.scale = (Math.random() * 2 + 1) * factorEscala;
 				heart._rotation = Math.random() * 40 - 20;
 				heart.alpha = Math.random() * 0.75 + 0.05;
 				heart.compositeOperation = Math.random() < 0.33 ? "lighter" : "source-over";
