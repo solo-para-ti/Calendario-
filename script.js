@@ -4,8 +4,15 @@ var container;
 var captureContainers;
 var captureIndex;
 
+var palabras = ["Garo", "Gallian", "Aho", "Buen9", "Diermo", "Uju.", "Sorsa", "Ajajaja7", "Ais", "Salr", "Ujun", "<Y", "Ezr", "Mao", "Pintos", "Algov", "Polítici", "Esoi", "Ciegob", "Ujam", "JAJAJAJ@", "Qur", "AJJAJAJAJAJAJAJ@", "A", "burnop", "Ay", "ay", "Mal9", "Focking", "Nonino", "Ske", "Totuga", "Estudee", "Cocholate", "Burno", "Esi", "Pingües", "Suenas", "conmigo", "Ajan", "Sev", "Qur", "Lanta", "Mrico", "Cuent", "Pelosb", "Emp", "Burnop", "Vovler", "Uyyt", "Tal", "ces", "JAajajjaja", "Nanananananan", "Digitod", "Udlos", "Najajajajajaj", "Pode", "Norias", "Nosa", "Mil", "tenas", "A", "ti", "ta", "Gago", "Versad", "Oswa", "Que", "perez", "Eso", "sw", "Tubería", "Erabe", "Baso", "Tenga", "de", "Pues", "so", "Escla9", "Desactive", "Historiaz", "Qje", "Nonon9", "Lelgue", "Pues", "mo", "Usj", "Entem", "Esl", "Curio", "Espery", "Somo", "Paos", "Binito."];
+
 function init() {
   canvas = document.getElementById("testCanvas");
+
+  var audio = document.getElementById("miCancion");
+  document.addEventListener("click", function () {
+    audio.play();
+  }, { once: true });
   stage = new createjs.Stage(canvas);
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
@@ -29,7 +36,8 @@ function init() {
 			container.addChild(heart);
 		}
 
-  var text = new createjs.Text("the longer I'm with you\nthe more I love you", "bold 24px Arial", "#fff");
+  var palabraAleatoria = palabras[Math.floor(Math.random() * palabras.length)];
+  var text = new createjs.Text("Lo que un día diji mi novia:\n" + palabraAleatoria, "bold 24px Arial", "#fff");
   text.textAlign = "center";
   text.x = w / 2;
   text.y = h / 2 - text.getMeasuredLineHeight();
@@ -43,14 +51,6 @@ function init() {
 
   createjs.Ticker.timingMode = createjs.Ticker.RAF;
   createjs.Ticker.on("tick", tick);
-
-  var audio = document.getElementById("miCancion");
-  document.addEventListener("touchstart", function () {
-    audio.play();
-  }, { once: true });
-  document.addEventListener("click", function () {
-    audio.play();
-  }, { once: true });
 }
 
 function tick(event) {
