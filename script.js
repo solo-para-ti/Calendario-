@@ -32,7 +32,7 @@ function init() {
   var palabras = ["Garo", "Gallian", "Aho", "Buen9", "Diermo", "Uju", "Sorsa", "Ajajaja7", "Ais", "Salr", "Ujun", "<Y", "Ezr", "Mao", "Pintos", "Algov", "Polítici", "Esoi", "Ciegob", "Ujam", "JAJAJAJ@", "Qur", "AJJAJAJAJAJAJAJ@", "A burnop", "Ay ay", "Mal9", "Focking", "Nonino", "Ske", "Totuga", "Estudee", "Cocholate", "Burno", "Esi", "Pingües", "Suenas conmigo", "Ajan", "Sev", "Qur", "Lanta", "Mrico", "Cuent", "Pelosb", "Emp", "Burnop", "Vovler", "Uyyt", "Tal ces", "JAajajjaja", "Nanananananan", "Digitod", "Udlos", "Najajajajajaj", "Pode", "Norias", "Nosa", "Mil tenas", "A ti ta", "Gago", "Versad", "Oswa", "Que perez", "Eso sw", "Tubería", "Erabe", "Baso", "Tenga de", "Pues so", "Escla9", "Desactive", "Historiaz", "Qje", "Nonon9", "Lelgue", "Pues mo", "Usj", "Entem", "Esl", "Curio", "Espery", "Somo", "Paos", "Binito"];
   var palabraAleatoria = palabras[Math.floor(Math.random() * palabras.length)];
 
-  var text = new createjs.Text("La nueva palabra del día es:\n" + palabraAleatoria, "bold 24px Arial", "#fff");
+  var text = new createjs.Text("Mi novia un día dijo:\n" + palabraAleatoria, "bold 24px Arial", "#fff");
   text.textAlign = "center";
   text.x = w / 2;
   text.y = h / 2 - text.getMeasuredLineHeight();
