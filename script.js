@@ -48,7 +48,7 @@ function init() {
 
   var listaCompleta = obtenerPalabras();
   var palabraAleatoria = listaCompleta[Math.floor(Math.random() * listaCompleta.length)];
-  var text = new createjs.Text("La nueva palabra del día es:\n" + palabraAleatoria, "bold 24px Arial", "#fff");
+  var text = new createjs.Text("Mi novia un día dijo:\n" + palabraAleatoria, "bold 24px Arial", "#fff");
   text.textAlign = "center";
   text.x = w / 2;
   text.y = h / 2 - text.getMeasuredLineHeight();
